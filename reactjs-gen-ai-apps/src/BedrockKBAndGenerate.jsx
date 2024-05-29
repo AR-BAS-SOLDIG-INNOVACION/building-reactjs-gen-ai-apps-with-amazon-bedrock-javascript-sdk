@@ -76,7 +76,7 @@ export default () => {
                 <Textarea
                     fitHeight
                     key={4}
-                    placeholder="Escribile una consulta al model. Por ejemplo "Cuando deja de considerarse 0km un auto?"..."
+                    placeholder="Escribile una consulta al model. Por ejemplo Cuando deja de considerarse 0km un auto?..."
                     onChange={({ detail }) => { setValue(detail.value) }}
                     onKeyUp={event => processKeyUp(event.detail.keyCode)}
                     value={value}

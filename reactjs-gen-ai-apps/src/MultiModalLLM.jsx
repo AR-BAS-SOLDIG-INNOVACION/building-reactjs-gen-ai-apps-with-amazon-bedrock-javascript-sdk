@@ -102,7 +102,7 @@ export default () => {
 
                 <Textarea
                     fitHeight
-                    placeholder="Escribile una consulta al model. Por ejemplo "Cuando deja de considerarse 0km un auto?"..."
+                    placeholder="Escribile una consulta al model. Por ejemplo Cuando deja de considerarse 0km un auto?..."
                     onChange={({ detail }) => { setValue(detail.value) }}
                     value={value}
                     disabled={loading}
