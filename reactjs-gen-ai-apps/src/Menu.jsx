@@ -30,7 +30,7 @@ const Menu = ({ signOut, groups, ...user }) => {
         onFollow: (() => { navigate("/") }),
         title: <div className='title'>Volkswagen AI Document Assitant</div>,
         logo: {
-          src: "https://cdn.worldvectorlogo.com/logos/volkswagen-logo-2019.svg",
+          src: "https://cdn.worldvectorlogo.com/logos/volkswagen-10.svg",
           alt: "Volkswagen"
         }
 

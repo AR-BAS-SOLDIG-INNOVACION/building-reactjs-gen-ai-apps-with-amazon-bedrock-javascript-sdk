@@ -66,7 +66,7 @@ export default () => {
                         <Button onClick={newConversation} >New Conversation</Button></SpaceBetween>
                 }
                 description="You can combine images and text in the input"
-                variant="h2">Conversacion</Header>}>
+                variant="h2">Conversación</Header>}>
 
             <SpaceBetween size="xs">
 
@@ -102,7 +102,7 @@ export default () => {
 
                 <Textarea
                     fitHeight
-                    placeholder="Write something to the model..."
+                    placeholder="Escribile una consulta al model. Por ejemplo "Cuando deja de considerarse 0km un auto?"..."
                     onChange={({ detail }) => { setValue(detail.value) }}
                     value={value}
                     disabled={loading}

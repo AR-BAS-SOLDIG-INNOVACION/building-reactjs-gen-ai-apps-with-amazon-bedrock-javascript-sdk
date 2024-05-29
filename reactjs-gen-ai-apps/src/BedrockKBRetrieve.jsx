@@ -60,7 +60,7 @@ export default () => {
     return (
 
         <Container key={2} disableContentPaddings={false}
-            header={<Header variant="h2">Conversacion</Header>}>
+            header={<Header variant="h2">Conversación</Header>}>
 
             <SpaceBetween size="xs">
                 <BedrockKBLoader ref={childRef} key={1} />
@@ -88,7 +88,7 @@ export default () => {
                     fitHeight
                     onBlur={childRef3?.current?.focus()}
                     ref={childRef3}
-                    placeholder="Write something to the model..."
+                    placeholder="Escribile una consulta al model. Por ejemplo "Cuando deja de considerarse 0km un auto?"..."
                     onChange={({ detail }) => {setValue(detail.value) }}
                     onKeyUp={event => processKeyUp(event.detail.keyCode)}
                     value={value}

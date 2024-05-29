@@ -25,10 +25,17 @@ export default () => {
                     activeHref={activeHref}
 
                     header={
-                        { href: "/", text: "Demos" }
+                        { href: "/", text: "Herramientas" }
                     }
                     items={
                         [
+                            {
+                                type: "section", text: "Knowledge Bases for Amazon Bedrock", items: [
+                                    /*{ type: 'link', text: `Amazon Bedrock Retrieve => LLM`, href: `/retrieve` },*/
+                                    { type: 'link', text: `Amazon Bedrock Retrieve & Generate`, href: `/retrieveandgenerate` }
+                                ]
+                            },
+                            { type: "divider" },
                             {
                                 type: "section", text: "Chat With Amazon Bedrock Multimodal", items: [
 /*                                     { type: "link", href: "/llm", text: "Chat Q&A" },
@@ -42,20 +49,15 @@ export default () => {
                                     { type: "link", href: "/prompt", text: "Prompts" }
                                 ]
                             },
-                            { type: "divider" },
+                            
 
-                            {
-                                type: "section", text: "Knowledge Bases for Amazon Bedrock", items: [
-                                    { type: 'link', text: `Amazon Bedrock Retrieve => LLM`, href: `/retrieve` },
-                                    { type: 'link', text: `Amazon Bedrock Retrieve & Generate`, href: `/retrieveandgenerate` }
-                                ]
-                            },
-                            { type: "divider" },
+
+                            /*{ type: "divider" },
                             {
                                 type: "section", text: "Agents for Amazon Bedrock", items: [
                                 { type: 'link', text: `Agents`, href: `/bedrockagent` },
                             ]
-                        }
+                        }*/
                         ]
                     }
                     onFollow={event => {
