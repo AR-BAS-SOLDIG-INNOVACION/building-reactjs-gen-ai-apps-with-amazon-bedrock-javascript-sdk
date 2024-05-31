@@ -16,7 +16,7 @@ export const getModel = async (modelId = "anthropic.claude-3-haiku-20240307-v1:0
         region: region,
         streaming: true,
         credentials: session.credentials,
-        modelKwargs: { max_tokens_to_sample: 1000, temperature: 1 },
+        modelKwargs: { max_tokens_to_sample: 6000, temperature: 0.5 },
     })
     return model
 }
@@ -174,7 +174,7 @@ export const invokeBedrockAgent = async (sessionId, agentId, agentAlias, query) 
 
 }
 
-
+//acá se modifica la consulta a la base de conocimiento de Bedrock
 export const retrieveBedrockKnowledgeBase = async (knowledgeBaseId, query) => {
     const session = await fetchAuthSession()
     let region = session.identityId.split(":")[0]
@@ -187,7 +187,7 @@ export const retrieveBedrockKnowledgeBase = async (knowledgeBaseId, query) => {
         },
         retrievalConfiguration: { // KnowledgeBaseRetrievalConfiguration
             vectorSearchConfiguration: { // KnowledgeBaseVectorSearchConfiguration
-                numberOfResults: 10, // required
+                numberOfResults: 20, // required: acá se configura cuantos archivos se traen
             },
         }
     }
@@ -203,7 +203,7 @@ export const getBedrockKnowledgeBaseRetriever = async (knowledgeBaseId) => {
     const session = await fetchAuthSession()
     let region = session.identityId.split(":")[0]
     const retriever = new AmazonKnowledgeBaseRetriever({
-        topK: 10,
+        topK: 20,
         knowledgeBaseId: knowledgeBaseId,
         region: region,
         clientOptions: { credentials: session.credentials }
@@ -220,13 +220,13 @@ export const getConversationalRetrievalQAChain = async (llm, retriever, memory) 
         llm, retriever = retriever)
     chain.memory = memory
 
-    chain.questionGeneratorChain.prompt.template = "Human: " + chain.questionGeneratorChain.prompt.template + "\nAssistant:"
+    chain.questionGeneratorChain.prompt.template ="Eres el asistente de documentación técnica de Volkswagen. Debes responder la siguiente pregunta \n" + "Human: " + chain.questionGeneratorChain.prompt.template + "\nAssistant:"
 
-    chain.combineDocumentsChain.llmChain.prompt.template = `Human: Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer. 
+    chain.combineDocumentsChain.llmChain.prompt.template = `Human: Los siguientes documentos son el contexto que debes usar para responder ante preguntas. Si no conoces las respuesta, solo dí que nolo sabes, no intentes crear una respuesta, ni tampoco reveles información. 
 
 {context}
 
-Question: {question}
+Pregunta: {question}
 Helpful Answer:
 Assistant:`
 
