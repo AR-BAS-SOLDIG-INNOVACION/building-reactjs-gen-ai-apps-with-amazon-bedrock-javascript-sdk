@@ -119,8 +119,30 @@ export const ragBedrockKnowledgeBase = async (sessionId, knowledgeBaseId, query,
                 knowledgeBaseId: knowledgeBaseId,
                 modelArn: `arn:aws:bedrock:${region}::foundation-model/${modelId}`
             },
+            retrievalConfiguration: { // KnowledgeBaseRetrievalConfiguration
+                vectorSearchConfiguration: { // KnowledgeBaseVectorSearchConfiguration
+                    numberOfResults: 25, // Corrected integer parsing
+                   // overrideSearchType: "HYBRID" // Defaulting to HYBRID; replace with logic if needed
+                }
+            },
+            generationConfiguration: { // GenerationConfiguration
+                promptTemplate: { // PromptTemplate
+                    textPromptTemplate: "STRING_VALUE", 
+                },
+                inferenceConfig: { // InferenceConfig
+                    textInferenceConfig: { // TextInferenceConfig
+                        temperature: 0.5,
+                        //topP: parseFloat(topP), // Corrected float parsing
+                        maxTokens: 6000, // Corrected integer parsing
+                        //stopSequences: [ // RAGStopSequences
+                        //    "STRING_VALUE", // Replace STRING_VALUE with actual stop sequence
+                        //],
+                    },
+                },
+            }
         }
-    }
+    };
+    
 
     if (sessionId) {
         input.sessionId = sessionId
