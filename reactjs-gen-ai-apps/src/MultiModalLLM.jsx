@@ -47,7 +47,7 @@ export default () => {
             const history = [...prev, { role: "user", content: content }]
             const body = {
                 "messages": history,
-                "anthropic_version": "bedrock-2023-05-31", "max_tokens": 1000
+                "anthropic_version": "bedrock-2023-05-31", "max_tokens": 2048
             }
             console.log(systemPrompt)
             if (systemPrompt) body["system"] = systemPrompt

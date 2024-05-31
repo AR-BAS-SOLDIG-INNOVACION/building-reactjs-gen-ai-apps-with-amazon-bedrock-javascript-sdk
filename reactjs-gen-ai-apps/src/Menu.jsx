@@ -28,7 +28,7 @@ const Menu = ({ signOut, groups, ...user }) => {
 
       identity={{
         onFollow: (() => { navigate("/") }),
-        title: <div className='title'>Volkswagen AI Document Assitant</div>,
+        title: <div className='title'>Volkswagen AI Document Assistant</div>,
         logo: {
           src: "https://cdn.worldvectorlogo.com/logos/volkswagen-10.svg",
           alt: "Volkswagen"
